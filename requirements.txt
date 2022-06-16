@@ -1,5 +1,5 @@
 gym>=0.21.0
-ray[rllib]==0.8.5
+ray[rllib]==0.8.6
 pettingzoo>=1.13.1
 opencv-python>=3.4
 numpy>=1.21.0
@@ -8,5 +8,5 @@ pandas
 matplotlib
 lz4
 setproctitle
-boto3
+# boto3 # This isn't absolutely necessary.
 psutil
