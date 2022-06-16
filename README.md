@@ -1,3 +1,14 @@
+## My own notes:
+
+**Setting up:**
+
+Need to run `. venv/bin/activate` to activate the virtual environment 
+
+
+
+
+
+
 [![Build Status](https://travis-ci.com/eugenevinitsky/sequential_social_dilemma_games.svg?branch=master)](https://travis-ci.com/eugenevinitsky/sequential_social_dilemma_games)
 
 # Sequential Social Dilemma Games
