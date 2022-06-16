@@ -1,5 +1,7 @@
 gym>=0.21.0
-ray[rllib]==0.8.5
+ray[rllib]==0.8.5 # I was getting an error here on 16/6/22 -> ray 0.8.5 has no such extra feature 'rllib'.
+# Note that I didn't try installing rllib in this file, I pipped installed it on the command line after I installed ray using this file. 
+ray==0.8.5
 pettingzoo>=1.13.1
 opencv-python>=3.4
 numpy>=1.21.0
@@ -8,5 +10,5 @@ pandas
 matplotlib
 lz4
 setproctitle
-# boto3 # This isn't absolutely necessary.
+# boto3 # This isn't absolutely necessary (I don't think).
 psutil
