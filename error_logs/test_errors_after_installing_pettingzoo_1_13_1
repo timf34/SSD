@@ -1,0 +1,95 @@
+These are errors that occured after installing the same version of pettingzoo that the authors were using
+
+It seems like there are potentially some issues with the current version of gym
+
+
+(venv) timf34@LAPTOP-5DO4KG0P:/mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games$ python -m pytest
+=========================================================================== test session starts ===========================================================================
+platform linux -- Python 3.8.10, pytest-7.1.2, pluggy-1.0.0
+rootdir: /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games
+collected 25 items
+
+tests/test_envs.py ......................                                                                                                                           [ 88%]
+tests/test_pettingzoo.py FF                                                                                                                                         [ 96%]
+tests/test_rollout.py .                                                                                                                                             [100%]
+
+================================================================================ FAILURES =================================================================================
+_________________________________________________________________________ PettingZooTest.test_aec _________________________________________________________________________
+
+self = <sequential_social_dilemma_games.tests.test_pettingzoo.PettingZooTest testMethod=test_aec>
+
+    def test_aec(self):
+        env = aec_env(max_cycles=MAX_CYCLES, env="harvest", num_agents=2)
+        env.seed(0)
+        env.reset()
+        n_act = env.action_space("agent-0").n
+        for agent in env.agent_iter(max_iter=MAX_CYCLES * env.num_agents):
+            _, _, _, _ = env.last()
+            action = np.random.randint(n_act)
+>           env.step(action)
+
+tests/test_pettingzoo.py:32:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+venv/lib/python3.8/site-packages/pettingzoo/utils/wrappers/order_enforcing.py:62: in step
+    super().step(action)
+venv/lib/python3.8/site-packages/pettingzoo/utils/wrappers/base.py:94: in step
+    self.env.step(action)
+venv/lib/python3.8/site-packages/pettingzoo/utils/wrappers/assert_out_of_bounds.py:16: in step
+    assert (action is None and self.dones[self.agent_selection]) or self.action_space(self.agent_selection).contains(action), "action is not in action space"
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <[AttributeError("'DiscreteWithDType' object has no attribute 'start'") raised in repr()] DiscreteWithDType object at 0x7fc360248070>, x = 6
+
+    def contains(self, x) -> bool:
+        """Return boolean specifying if x is a valid member of this space."""
+        if isinstance(x, int):
+            as_int = x
+        elif isinstance(x, (np.generic, np.ndarray)) and (
+            x.dtype.char in np.typecodes["AllInteger"] and x.shape == ()
+        ):
+            as_int = int(x)  # type: ignore
+        else:
+            return False
+>       return self.start <= as_int < self.start + self.n
+E       AttributeError: 'DiscreteWithDType' object has no attribute 'start'
+
+venv/lib/python3.8/site-packages/gym-0.24.1-py3.8.egg/gym/spaces/discrete.py:63: AttributeError
+______________________________________________________________________ PettingZooTest.test_parallel _______________________________________________________________________
+
+self = <sequential_social_dilemma_games.tests.test_pettingzoo.PettingZooTest testMethod=test_parallel>
+
+    def test_parallel(self):
+        env = parallel_env(max_cycles=MAX_CYCLES, env="harvest", num_agents=2)
+        env.seed()
+        env.reset()
+        n_act = env.action_space("agent-0").n
+        for _ in range(MAX_CYCLES * env.num_agents):
+            actions = {agent: np.random.randint(n_act) for agent in env.agents}
+            _, _, _, _ = env.step(actions)
+            if not env.agents:
+                _ = env.reset()
+>       parallel_api_test(env, MAX_CYCLES)
+
+tests/test_pettingzoo.py:22:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+venv/lib/python3.8/site-packages/pettingzoo/test/parallel_test.py:26: in parallel_api_test
+    actions = {agent: par_env.action_space(agent).sample() for agent in par_env.agents if agent in done and not done[agent]}
+venv/lib/python3.8/site-packages/pettingzoo/test/parallel_test.py:26: in <dictcomp>
+    actions = {agent: par_env.action_space(agent).sample() for agent in par_env.agents if agent in done and not done[agent]}
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+
+    def sample(self) -> int:
+        """Generates a single random sample from this space.
+
+        A sample will be chosen uniformly at random.
+
+        Returns:
+        """
+>       return int(self.start + self.np_random.integers(self.n))
+E       AttributeError: 'DiscreteWithDType' object has no attribute 'start'
+
+venv/lib/python3.8/site-packages/gym-0.24.1-py3.8.egg/gym/spaces/discrete.py:51: AttributeError
+D tests/test_pettingzoo.py::PettingZooTest::test_aec - AttributeError: 'DiscreteWithDType' object has no attribute 'start'
+FAILED tests/test_pettingzoo.py::PettingZooTest::test_parallel - AttributeError: 'DiscreteWithDType' object has no attribute 'start'
+================================================================ 2 failed, 23 passed in 130.34s (0:02:10) =================================================================(v(((

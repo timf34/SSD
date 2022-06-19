@@ -1,0 +1,13 @@
+when I changed the name of test_pettingzoo.py so that it would be excluded from pytest, the other tests passed! Or
+at least everything in rollout did - 95% passed in test_envs.py
+
+(venv) timf34@LAPTOP-5DO4KG0P:/mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games$ python -m pytest
+================================================================================================================================================ test session starts ================================================================================================================================================
+platform linux -- Python 3.8.10, pytest-7.1.2, pluggy-1.0.0
+rootdir: /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games
+collected 23 items
+
+tests/test_envs.py ......................                                                                                                                                                                                                                                                                     [ 95%]
+tests/test_rollout.py .                                                                                                                                                                                                                                                                                       [100%]
+
+================================================================================================================================================ 23 passed in 34.39s ================================================================================================================================================
