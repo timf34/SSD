@@ -36,6 +36,18 @@ def benchmark_cleanup():
     t.stop()
     t.print_stats()
 
+    # Lets try again without the for loop
+    print("round 2")
+
+    t = Timer()
+    t.start()
+    env_loop(environment=cleanup_env, num_episodes=1)
+    t.update_episodes()
+    env_loop(environment=harvest_env, num_episodes=1)
+    t.update_episodes()
+    t.stop()
+    t.print_stats()
+
 
 def env_loop(environment, num_episodes: int = 1, episode_length: int = 1000) -> None:
     """
@@ -55,19 +67,10 @@ def env_loop(environment, num_episodes: int = 1, episode_length: int = 1000) -> 
         num_episodes-=1
 
 
-def itertools_test():
-    for i in itertools.repeat(None, 2):
-        print(i)
-        # This prints None twice?
-
-    for i in range(3-1):
-        print(i)
-
-    for i in range(1-0):
-        print(i)
-
 
 if __name__ == '__main__':
     benchmark_cleanup()
-    itertools_test()
+
+    for _ in range(2):
+        print("yolo")
     print("Done!")
