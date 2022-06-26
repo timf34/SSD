@@ -52,7 +52,7 @@ class Controller(object):
         for i in range(horizon):
             agents = list(self.env.agents.values())
             action_dim = self.env.action_space.n
-            agent_action_dict = dict()
+            agent_action_dict = {}
             for agent in agents:
                 rand_action = np.random.randint(action_dim)
                 agent_action_dict[agent.agent_id] = rand_action
@@ -66,9 +66,9 @@ class Controller(object):
             sys.stdout.flush()
 
             if save_path is not None:
-                self.env.render(filename=save_path + "frame" + str(i).zfill(6) + ".png")
+                self.env.render(filename=f"{save_path}frame{str(i).zfill(6)}.png")
                 if i % 10 == 0:
-                    print("Saved frame " + str(i) + "/" + str(horizon))
+                    print(f"Saved frame {str(i)}/{str(horizon)}")
 
             rgb_arr = self.env.full_map_to_colors()
             full_obs[i] = rgb_arr.astype(np.uint8)
@@ -91,11 +91,11 @@ class Controller(object):
             fps: Integer frames per second.
         """
         if path is None:
-            path = os.path.abspath(os.path.dirname(__file__)) + "/videos"
+            path = f"{os.path.abspath(os.path.dirname(__file__))}/videos"
             print(path)
             if not os.path.exists(path):
                 os.makedirs(path)
-        video_name = self.env_name + "_trajectory"
+        video_name = f"{self.env_name}_trajectory"
 
         if render_type == "pretty":
             image_path = os.path.join(path, "frames/")
@@ -121,5 +121,5 @@ if __name__ == "__main__":
         path="rollout",
         horizon=100,
         render_type="pretty",
-        fps=60,
+        fps=1,
     )
