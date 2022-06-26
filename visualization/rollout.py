@@ -46,7 +46,8 @@ class Controller(object):
         rewards = []
         observations = []
         shape = self.env.world_map.shape
-        full_obs = [np.zeros((shape[0], shape[1], 3), dtype=np.uint8) for i in range(horizon)]
+        full_obs = [np.zeros((shape[0], shape[1], 3), dtype=np.uint8) for _ in range(horizon)]
+
 
         for i in range(horizon):
             agents = list(self.env.agents.values())
