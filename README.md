@@ -2,7 +2,9 @@
 
 **Setting up:**
 
-Need to run `. venv/bin/activate` to activate the virtual environment 
+Need to open up a WSL2 terminal 
+
+Then need to run `. venv/bin/activate` to activate the virtual environment 
 
 
 
