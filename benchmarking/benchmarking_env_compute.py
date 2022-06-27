@@ -42,7 +42,8 @@ def benchmark_envs():
                 cleanup_env.step(actions)
 
         warmup.stop()
-        print("Warmpup time: ", warmup.print_stats())
+        print("Warmup time...")
+        warmup.print_stats()
 
         # Initialize timer
         t = Timer()
