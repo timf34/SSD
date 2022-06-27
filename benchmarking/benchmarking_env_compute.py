@@ -13,9 +13,94 @@ from benchmarking.timer import Timer
 """
 
 
-def benchmark_cleanup():
+def benchmark_envs():
     """
     Benchmarks environments steps by executing random actions in a cleanup environment with 5 agents.
+    """
+
+    # Note that I know this is messy, but it seems to give the most accuarte results (or at least the fastest)
+    # see my code below which seems to act a bit weirder...
+
+    envs = ["cleanup", "harvest"]
+    for env in envs:
+        print("Starting benchmark for: ", env)
+
+        # Get the environments
+        cleanup_env = get_env_creator(env, 5, {})(0)
+        # harvest_env = get_env_creator("harvest", 5, {})(0)
+
+        agent_ids = ["agent-" + str(agent_number) for agent_number in range(5)]
+
+        actions = {}
+
+        warmup = Timer()
+        warmup.start()
+
+        for __ in range(1000):
+            for agent_id in agent_ids:
+                actions[agent_id] = np.random.randint(8)
+                cleanup_env.step(actions)
+
+        warmup.stop()
+        print("Warmpup time: ", warmup.print_stats())
+
+        # Initialize timer
+        t = Timer()
+        t.start()
+        for _ in range(1000):
+            for agent_id in agent_ids:
+                actions[agent_id] = np.random.randint(8)
+                cleanup_env.step(actions)
+
+        t.stop()
+        t.print_stats()
+
+        t2 = Timer()
+        t2.start()
+
+        for _ in range(1000):
+            for agent_id in agent_ids:
+                actions[agent_id] = np.random.randint(8)
+                cleanup_env.step(actions)
+
+        t2.stop()
+        t2.print_stats()
+
+
+if __name__ == '__main__':
+    benchmark_envs()
+    print("Done!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def benchmark_cleanup_weird():
+    """
+    Benchmarks environments steps by executing random actions in a cleanup environment with 5 agents.
+
+    There is some very strange behaviour going on here... I am going to redo this function more simply and copy this
+    function below to look at laster...
+
+    Here is some sample output, but really everything has been strange...
     """
     # Get the environments
     cleanup_env = get_env_creator("cleanup", 5, {})(0)
@@ -65,12 +150,3 @@ def env_loop(environment, num_episodes: int = 1, episode_length: int = 1000) -> 
                 actions[agent_id] = np.random.randint(8)
                 environment.step(actions)
         num_episodes-=1
-
-
-
-if __name__ == '__main__':
-    benchmark_cleanup()
-
-    for _ in range(2):
-        print("yolo")
-    print("Done!")
