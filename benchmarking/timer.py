@@ -31,6 +31,8 @@ class Timer:
         # print("Start time:", self.start_time)
         # print("End time:", self.end_time)
         print("Elapsed time:", self.elapsed_time)
+        if self.episodes > 0:
+            print("Average time:", self.elapsed_time / self.episodes)
         # print("Average time per episode:", self.average_time)
         # In general we can assume there are 1000 steps per episode but that kinda just complicates things here rn
         # Not needed for the moment unless I decide to chnage the number of steps from 1000
