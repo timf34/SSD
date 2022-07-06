@@ -7,15 +7,16 @@ from benchmarking.timer import Timer
 
 t = Timer()
 
+# Note that this is very messy so I need to clean up this structure later
+
+# Initializing everything that is needed for the benchmark
+harvest_env = get_env_creator("harvest", 5, {})(0)
+harvest_env.reset()
+agent_ids = [f"agent-{str(agent_number)}" for agent_number in range(5)]
+actions = {}
+
 
 def run_harvest_env():
-    harvest_env = get_env_creator("harvest", 5, {})(0)
-    harvest_env.reset()
-
-    agent_ids = [f"agent-{str(agent_number)}" for agent_number in range(5)]
-
-    actions = {}
-
     t.start()
 
     for _ in range(1000):
