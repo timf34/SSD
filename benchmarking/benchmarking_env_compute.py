@@ -39,7 +39,7 @@ def benchmark_envs():
         for __ in range(1000):
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
-                cleanup_env.step(actions)
+            cleanup_env.step(actions)
 
         warmup.stop()
         print("Warmup time...")
@@ -51,7 +51,7 @@ def benchmark_envs():
         for _ in range(1000):
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
-                cleanup_env.step(actions)
+            cleanup_env.step(actions)
 
         t.stop()
         t.print_stats()
@@ -59,10 +59,12 @@ def benchmark_envs():
         t2 = Timer()
         t2.start()
 
-        for _ in range(1000):
-            for agent_id in agent_ids:
-                actions[agent_id] = np.random.randint(8)
+        for __ in range(10):
+            for _ in range(1000):
+                for agent_id in agent_ids:
+                    actions[agent_id] = np.random.randint(8)
                 cleanup_env.step(actions)
+            t2.update_episodes()
 
         t2.stop()
         t2.print_stats()
