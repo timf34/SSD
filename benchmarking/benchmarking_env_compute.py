@@ -26,7 +26,7 @@ def benchmark_envs():
         print("Starting benchmark for: ", env)
 
         # Get the environments
-        cleanup_env = get_env_creator(env, 5, {})(0)
+        env = get_env_creator(env, 5, {})(0)
         # harvest_env = get_env_creator("harvest", 5, {})(0)
 
         agent_ids = ["agent-" + str(agent_number) for agent_number in range(5)]
@@ -39,7 +39,7 @@ def benchmark_envs():
         for __ in range(1000):
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
-            cleanup_env.step(actions)
+            env.step(actions)
 
         warmup.stop()
         print("Warmup time...")
@@ -51,10 +51,11 @@ def benchmark_envs():
         for _ in range(1000):
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
-            cleanup_env.step(actions)
+            env.step(actions)
 
         t.stop()
         t.print_stats()
+        env.reset()
 
         t2 = Timer()
         t2.start()
@@ -63,11 +64,15 @@ def benchmark_envs():
             for _ in range(1000):
                 for agent_id in agent_ids:
                     actions[agent_id] = np.random.randint(8)
-                cleanup_env.step(actions)
+                env.step(actions)
             t2.update_episodes()
+            env.reset()
 
         t2.stop()
         t2.print_stats()
+
+        env.reset()
+
 
 
 if __name__ == '__main__':
