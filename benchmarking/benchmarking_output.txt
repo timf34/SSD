@@ -1,0 +1,23 @@
+# Output from our `benchmarking_env_compute.py` script
+
+# TODO: append the output + time and date automatically in the script.
+
+10:57 6/7/22
+
+Starting benchmark for:  cleanup
+Warmup time...
+Elapsed time: 0.9302723000000128
+Elapsed time: 0.8387425999999891
+Elapsed time: 8.1745406
+Average time: 0.81745406
+Starting benchmark for:  harvest
+Warmup time...
+Elapsed time: 3.629882899999984
+Elapsed time: 3.538099099999954
+Elapsed time: 37.750402800000074
+Average time: 3.7750402800000074
+Done!
+
+
+
+
