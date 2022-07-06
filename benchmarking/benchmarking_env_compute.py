@@ -40,7 +40,7 @@ def benchmark_envs():
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
             env.step(actions)
-
+        env.reset()
         warmup.stop()
         print("Warmup time...")
         warmup.print_stats()
@@ -52,6 +52,7 @@ def benchmark_envs():
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
             env.step(actions)
+        emv.reset()
 
         t.stop()
         t.print_stats()
