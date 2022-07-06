@@ -36,5 +36,43 @@ Average time: 1.524865879999993
 Done!
 
 
+11:04 6/7/22 (confirming the above gains)
+The env is still just as slow when you run it once. But when you run it for 10 epochs directly, it's faster.
+Starting benchmark for:  cleanup
+Warmup time...
+Elapsed time: 1.3520502000000079
+Elapsed time: 1.3438214000000244
+Elapsed time: 11.621429400000011
+Average time: 1.1621429400000012
+Starting benchmark for:  harvest
+Warmup time...
+Elapsed time: 5.038001000000008
+Elapsed time: 7.283943500000078
+Elapsed time: 14.483912600000053
+Average time: 1.4483912600000053
+Done!
+
+11:06 6/7/22 (I have added env.reset() to every episode, even those in the warmup phase)
+
+_Yes so we can see it here clearly that calling env.reset() seems to really speed things up. Compared to the above log_
+_I added `env.reset()` also to the warmup phase. **For example, see the 2nd warmup run of harvest!** In the above run_
+_it is also super slow, but in the run below, it is considerably faster!_
+
+Starting benchmark for:  cleanup
+Warmup time...
+Elapsed time: 1.1150550999998359
+Elapsed time: 1.2740166000000954
+Elapsed time: 12.64424729999996
+Average time: 1.264424729999996
+Starting benchmark for:  harvest
+Warmup time...
+Elapsed time: 6.97341920000008
+Elapsed time: 2.2686154000000442
+Elapsed time: 21.712202800000114
+Average time: 2.1712202800000115
+Done!
+
+
+
 
 
