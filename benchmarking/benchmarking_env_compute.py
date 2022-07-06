@@ -36,6 +36,8 @@ def benchmark_envs():
         warmup = Timer()
         warmup.start()
 
+        env.reset()
+
         for __ in range(1000):
             for agent_id in agent_ids:
                 actions[agent_id] = np.random.randint(8)
