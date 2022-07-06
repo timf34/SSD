@@ -73,6 +73,22 @@ Average time: 2.1712202800000115
 Done!
 
 
+11:09 6/7/22 (same as above)
+Starting benchmark for:  cleanup
+Warmup time...
+Elapsed time: 1.0384954999999536
+Elapsed time: 0.9810989000000063
+Elapsed time: 12.288185900000144
+Average time: 1.2288185900000144
+Starting benchmark for:  harvest
+Warmup time...
+Elapsed time: 1.7659830000000056
+Elapsed time: 1.7127934000000096
+Elapsed time: 17.698556900000085
+Average time: 1.7698556900000084
+Done!
+
+
 
 
 
