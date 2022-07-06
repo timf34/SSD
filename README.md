@@ -6,6 +6,8 @@ Need to open up a WSL2 terminal
 
 Then need to run `. venv/bin/activate` to activate the virtual environment 
 
+- [] add an updated wsl_venv_requirements.txt for setting up. Probably remove the older setup scripts. 
+
 
 
 
