@@ -1,0 +1,32 @@
+# This is output from our `profiling_env.py` script.
+
+# TODO: append the output + time and date automatically in the script.
+
+10:55 6/7/22
+
+Elapsed time: 1.870559299999968
+done
+         580628 function calls (567270 primitive calls) in 1.871 seconds
+   Ordered by: cumulative time
+   List reduced from 138 to 20 due to restriction <20>
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.011    0.011    1.871    1.871 profiling_env.py:19(run_harvest_env)
+     1000    0.097    0.000    1.823    0.002 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:217(step)
+     1000    0.005    0.000    0.669    0.001 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/harvest.py:77(custom_map_update)
+     1000    0.639    0.001    0.662    0.001 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/harvest.py:83(spawn_apples)
+     1000    0.094    0.000    0.494    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:481(update_moves)
+24746/11388    0.069    0.000    0.490    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+      994    0.002    0.000    0.245    0.000 <__array_function__ internals>:177(unique)
+      994    0.016    0.000    0.239    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/venv/lib/python3.8/site-packages/numpy-1.23.0rc3-py3.8-linux-x86_64.egg/numpy/lib/arraysetops.py:138(unique)
+     5000    0.024    0.000    0.189    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:400(color_view)
+     3697    0.006    0.000    0.164    0.000 <__array_function__ internals>:177(rot90)
+     3697    0.041    0.000    0.152    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/venv/lib/python3.8/site-packages/numpy-1.23.0rc3-py3.8-linux-x86_64.egg/numpy/lib/function_base.py:158(rot90)
+     1000    0.006    0.000    0.143    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:678(update_custom_moves)
+      578    0.003    0.000    0.130    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/harvest.py:67(custom_action)
+      578    0.071    0.000    0.126    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:721(update_map_fire)
+      994    0.038    0.000    0.110    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/venv/lib/python3.8/site-packages/numpy-1.23.0rc3-py3.8-linux-x86_64.egg/numpy/lib/arraysetops.py:323(_unique1d)
+     4870    0.005    0.000    0.068    0.000 <__array_function__ internals>:177(flip)
+     5000    0.029    0.000    0.064    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/social_dilemmas/envs/map_env.py:889(find_visible_agents)
+     2988    0.016    0.000    0.061    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/venv/lib/python3.8/site-packages/numpy-1.23.0rc3-py3.8-linux-x86_64.egg/numpy/core/fromnumeric.py:69(_wrapreduction)
+     4870    0.025    0.000    0.057    0.000 /mnt/c/Users/timf3/PycharmProjects/sequential_social_dilemma_games/venv/lib/python3.8/site-packages/numpy-1.23.0rc3-py3.8-linux-x86_64.egg/numpy/lib/function_base.py:252(flip)
+     1994    0.003    0.000    0.057    0.000 <__array_function__ internals>:177(any)
