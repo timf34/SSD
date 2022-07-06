@@ -19,5 +19,22 @@ Average time: 3.7750402800000074
 Done!
 
 
+11:02 6/7/22 (after I added env.reset())
+
+Starting benchmark for:  cleanup
+Warmup time...
+Elapsed time: 1.198553699999934
+Elapsed time: 1.0955188000000362
+Elapsed time: 15.3922503
+Average time: 1.53922503
+Starting benchmark for:  harvest
+Warmup time...
+Elapsed time: 5.23256159999994
+Elapsed time: 4.60278679999999
+Elapsed time: 15.24865879999993
+Average time: 1.524865879999993
+Done!
+
+
 
 
