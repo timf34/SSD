@@ -12,7 +12,7 @@ def run_harvest_env():
     harvest_env = get_env_creator("harvest", 5, {})(0)
     harvest_env.reset()
 
-    agent_ids = ["agent-" + str(agent_number) for agent_number in range(5)]
+    agent_ids = [f"agent-{str(agent_number)}" for agent_number in range(5)]
 
     actions = {}
 
