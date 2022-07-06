@@ -62,3 +62,14 @@ class SwitchMapElements:
     one_switch_row = "@s    @"
     two_switch_row = "@s   s@"
     bottom_row = "@@@@@@@"
+
+
+def view_map_size(map_):
+    return len(map_[0]), len(map_)
+
+
+if __name__ == '__main__':
+    print("Harvest:", view_map_size(HARVEST_MAP))
+    print("Cleanup:", view_map_size(CLEANUP_MAP))
+
+
