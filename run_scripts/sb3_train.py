@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument(
         "--env-name",
         type=str,
-        default="harvest",
+        default="cleanup",
         choices=["harvest", "cleanup"],
         help="The SSD environment to use",
     )
