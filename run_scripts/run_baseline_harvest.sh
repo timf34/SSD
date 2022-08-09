@@ -4,7 +4,7 @@ python train.py \
 --env harvest \
 --model baseline \
 --algorithm PPO \
---num_agents 5 \
+--num_agents 1 \
 --num_workers 6 \
 --rollout_fragment_length 1000 \
 --num_envs_per_worker 16 \
